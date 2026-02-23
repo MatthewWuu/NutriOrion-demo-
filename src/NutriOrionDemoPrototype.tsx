@@ -3,6 +3,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 const BASE = import.meta.env.BASE_URL;
 function fig(name: string) { return `${BASE}figures/${name}`; }
 
+function Ref({ id }: { id: string }) {
+  return <sup className="text-[9px] text-indigo-500 font-medium ml-px">[{id}]</sup>;
+}
+
 const NAV = [
   { id: "overview", label: "Overview" },
   { id: "how", label: "How it works" },
@@ -615,30 +619,30 @@ export default function NutriOrionDemoPrototype() {
           >
             <div className="space-y-5">
               <div className="text-sm text-slate-700 leading-relaxed max-w-4xl">
-                A hierarchical multi-agent framework that generates clinically valid, personalized nutrition plans 
-                grounded in evidence-based guidelines. NutriOrion handles conflicting dietary requirements across 
-                multiple conditions while enforcing medication safety constraints, producing structured ADIME outputs 
-                and FHIR-ready resources for seamless EHR integration.
+                A hierarchical multi-agent framework that generates clinically valid, personalized nutrition plans
+                grounded in evidence-based guidelines. NutriOrion handles conflicting dietary requirements across
+                multiple conditions while enforcing medication safety constraints, producing structured
+                ADIME <Ref id="39" /> outputs and FHIR-ready resources for seamless EHR integration.
               </div>
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">The Stakes</div>
                   <div className="mt-2 text-sm text-slate-700">
-                    Chronic diseases cause <span className="font-semibold text-slate-900">70% of global mortality</span>. 
-                    Structured nutrition can match pharmacological treatments in effectiveness — yet 
-                    <span className="font-semibold text-slate-900"> 40% of patients</span> have multiple co-occurring conditions 
-                    that demand conflicting diets. With only <span className="font-semibold text-slate-900">1 nutrition professional 
-                    per 5,000 patients</span>, manual integration is impossible at scale.
+                    Chronic diseases cause <span className="font-semibold text-slate-900">70% of global mortality</span> <Ref id="12" />.
+                    Structured nutrition can match pharmacological treatments in effectiveness <Ref id="14,17" /> — yet
+                    <span className="font-semibold text-slate-900"> 40% of patients</span> have multiple co-occurring conditions
+                    that demand conflicting diets <Ref id="10,35" />. With only <span className="font-semibold text-slate-900">1 nutrition professional
+                    per 5,000 patients</span> <Ref id="18,38" />, manual integration is impossible at scale.
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Why Current AI Fails</div>
                   <div className="mt-2 text-sm text-slate-700">
-                    Single-agent LLMs process all patient data through one context window. 
-                    As complexity grows, they suffer from <span className="font-semibold text-slate-900">reasoning collapse</span>: 
-                    safety constraints get overridden, drug–nutrient interactions are missed, 
-                    and recommendations contradict patient data. A "healthy" suggestion can become 
+                    Single-agent LLMs process all patient data through one context window.
+                    As complexity grows, they suffer from <span className="font-semibold text-slate-900">reasoning collapse</span> <Ref id="24,31" />:
+                    safety constraints get overridden, drug–nutrient interactions are missed,
+                    and recommendations contradict patient data <Ref id="5,34" />. A "healthy" suggestion can become
                     a <span className="font-semibold text-slate-900">dangerous one</span>.
                   </div>
                 </div>
@@ -646,8 +650,8 @@ export default function NutriOrionDemoPrototype() {
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">The Key Insight</div>
                   <div className="mt-2 text-sm text-slate-700">
-                    Clinical teams don't work as a single brain — they <span className="font-semibold text-slate-900">divide and conquer</span>. 
-                    Each specialist assesses independently, then they synthesize together. NutriOrion mirrors 
+                    Clinical teams don't work as a single brain — they <span className="font-semibold text-slate-900">divide and conquer</span> <Ref id="7" />.
+                    Each specialist assesses independently, then they synthesize together. NutriOrion mirrors
                     this: <span className="font-semibold text-slate-900">decompose, isolate, then synthesize under safety constraints</span>.
                   </div>
                 </div>
@@ -659,25 +663,25 @@ export default function NutriOrionDemoPrototype() {
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">1. Retrieve</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Ground every decision in clinical guidelines (DASH, ADA) and real drug labels (DailyMed) — not memorized knowledge.
+                      Ground every decision in clinical guidelines (DASH <Ref id="11" />, ADA <Ref id="2" />) and real drug labels (DailyMed <Ref id="43" />) via RAG <Ref id="15,22" /> — not memorized knowledge.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">2. Assess in Parallel</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Specialized agents (Body, Clinical, Medication, Diet) analyze independently with isolated contexts, preventing cross-domain bias.
+                      Specialized agents (Body, Clinical, Medication, Diet) analyze independently with isolated contexts, preventing cross-domain bias and anchoring <Ref id="24" />.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">3. Refine & Prioritize</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Condition-specific dietitians resolve conflicts via Severity–Urgency–Modifiability scoring, while safety constraints are injected as hard negatives.
+                      Condition-specific dietitians resolve conflicts via Severity–Urgency–Modifiability scoring, while safety constraints are injected as hard negatives <Ref id="8" />.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">4. Output</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Structured ADIME clinical notes + FHIR R4 NutritionOrder — ready for direct EHR integration.
+                      Structured ADIME <Ref id="39" /> clinical notes + FHIR R4 NutritionOrder — ready for direct EHR integration.
                     </div>
                   </div>
                 </div>
@@ -686,7 +690,7 @@ export default function NutriOrionDemoPrototype() {
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">330</div>
-                  <div className="mt-1 text-xs text-slate-600">Multimorbid stroke patients evaluated</div>
+                  <div className="mt-1 text-xs text-slate-600">Multimorbid stroke patients (NHANES <Ref id="19" />)</div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">97.8%</div>
@@ -694,7 +698,7 @@ export default function NutriOrionDemoPrototype() {
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">7.5 / 8</div>
-                  <div className="mt-1 text-xs text-slate-600">Expert dietitian quality rating (NCP-QUEST)</div>
+                  <div className="mt-1 text-xs text-slate-600">Expert dietitian quality rating (NCP-QUEST <Ref id="23" />)</div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">+167%</div>
