@@ -1,16 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
-/**
- * NutriOrion Demo Site Prototype (Offline)
- *
- * ✅ Static-only demo website (no live model / no API calls).
- * ✅ Single-file component you can drop into Next.js or Vite.
- * ✅ Includes an embedded architecture figure (served from /public/figures).
- *
- * Static assets expected (place into public/figures/):
- * - /figures/DiagramFinal-03.webp
- * - /figures/DiagramFinal-03.png
- */
+const BASE = import.meta.env.BASE_URL;
+function fig(name: string) { return `${BASE}figures/${name}`; }
 
 const NAV = [
   { id: "overview", label: "Overview" },
@@ -447,7 +438,7 @@ function ArchitectureFigure() {
       <div className="p-4">
         {!missing ? (
           <img
-            src="/figures/NutriOrion_case.png"
+            src={fig("NutriOrion_case.png")}
             alt="The Healthy Food Trap: A stroke patient on Warfarin asks for a healthy lunch. Generic AI suggests spinach kale salad, but high Vitamin K blocks Warfarin function, increasing clot risk."
             className="w-full h-auto rounded-xl border border-slate-200 bg-white"
             loading="lazy"
@@ -595,7 +586,7 @@ export default function NutriOrionDemoPrototype() {
         </div>
         <h1 className="mt-4 text-3xl font-semibold tracking-tight flex items-center gap-3 flex-wrap">
           <span>NutriOrion: Personalized Nutrition Intervention for Multimorbid Patients</span>
-          <img src="/figures/emory-logo.png" alt="Emory University" className="h-7 w-auto object-contain opacity-80" />
+          <img src={fig("emory-logo.png")} alt="Emory University" className="h-7 w-auto object-contain opacity-80" />
         </h1>
 
         <div className="mt-5 flex flex-wrap gap-2">
@@ -1153,7 +1144,7 @@ export default function NutriOrionDemoPrototype() {
                       Bubble size = dietary diversity. Color = NutriScore. NutriOrion occupies the <strong className="text-slate-700">optimal frontier (top-right)</strong>.
                     </div>
                     <div className="rounded-xl border border-slate-200 bg-white p-4">
-                      <img src="/figures/bubble_chart.png" alt="Bubble chart: actionability vs food quality" className="w-full h-auto rounded-lg" loading="lazy" />
+                      <img src={fig("bubble_chart.png")} alt="Bubble chart: actionability vs food quality" className="w-full h-auto rounded-lg" loading="lazy" />
                     </div>
                   </div>
                   <div className="space-y-2">
@@ -1162,7 +1153,7 @@ export default function NutriOrionDemoPrototype() {
                       reflecting targeted, evidence-based dietary adjustments for chronic disease management.
                     </div>
                     <div className="rounded-xl border border-slate-200 bg-white p-4">
-                      <img src="/figures/nutrient_chart.png" alt="Nutrient changes: energy, sodium, sugars down; potassium, fiber up" className="w-full h-auto rounded-lg" loading="lazy" />
+                      <img src={fig("nutrient_chart.png")} alt="Nutrient changes: energy, sodium, sugars down; potassium, fiber up" className="w-full h-auto rounded-lg" loading="lazy" />
                     </div>
                     <div className="grid grid-cols-5 gap-2">
                       {[
@@ -1204,7 +1195,7 @@ export default function NutriOrionDemoPrototype() {
                       Blue (negative) = effective. Red (positive) = unsafe.
                     </div>
                     <div className="rounded-xl border border-slate-200 bg-white p-4">
-                      <img src="/figures/heatmap.png" alt="Personalization heatmap" className="w-full h-auto rounded-lg" loading="lazy" />
+                      <img src={fig("heatmap.png")} alt="Personalization heatmap" className="w-full h-auto rounded-lg" loading="lazy" />
                     </div>
                   </div>
                   <div className="space-y-2.5">
@@ -1313,7 +1304,7 @@ export default function NutriOrionDemoPrototype() {
                       using a structured survey across 6 NCP dimensions (Cohen's κ = 0.82).
                     </div>
                     <div className="rounded-xl border border-slate-200 bg-white p-4">
-                      <img src="/figures/radar_chart.png" alt="Radar chart: 6-dimension RD evaluation" className="w-full h-auto rounded-lg" loading="lazy" />
+                      <img src={fig("radar_chart.png")} alt="Radar chart: 6-dimension RD evaluation" className="w-full h-auto rounded-lg" loading="lazy" />
                     </div>
                   </div>
                   <div className="space-y-2.5">
