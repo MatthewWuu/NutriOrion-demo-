@@ -1144,7 +1144,7 @@ export default function NutriOrionDemoPrototype() {
           <Section
             id="results"
             title="Experimental Results"
-            subtitle="Evaluated on 330 multimorbid stroke patients from NHANES, benchmarked against 12 baselines including GPT-4.1 and Claude-Sonnet-4."
+            subtitle="NutriOrion is powered by GPT-4o-mini. Evaluated on 330 multimorbid stroke patients from NHANES, benchmarked against 12 baselines including GPT-4.1 and Claude-Sonnet-4."
           >
             <div className="space-y-8">
 
