@@ -585,7 +585,7 @@ export default function NutriOrionDemoPrototype() {
           </div>
         </div>
         <h1 className="mt-4 text-3xl font-semibold tracking-tight flex items-center gap-3 flex-wrap">
-          <span>NutriOrion: Personalized Nutrition Intervention for Multimorbid Patients</span>
+          <span>NutriOrion: A Hierarchical Multi-Agent Framework for Personalized Nutrition Intervention Grounded in Clinical Guidelines</span>
           <img src={fig("emory-logo.png")} alt="Emory University" className="h-7 w-auto object-contain opacity-80" />
         </h1>
 
