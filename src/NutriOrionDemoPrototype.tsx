@@ -3,6 +3,30 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 const BASE = import.meta.env.BASE_URL;
 function fig(name: string) { return `${BASE}figures/${name}`; }
 
+const REFERENCES: Record<string, string> = {
+  "1": "Skipper, A. 2007. Applying the nutrition care process: nutrition diagnosis and intervention. Support Line 29(6), 12–23.",
+  "2": "Elkomy, S. & Jackson, T. 2024. WHO non-communicable diseases Global Monitoring Framework. Socio-Economic Planning Sciences 95, 102043.",
+  "3": "Estruch, R. et al. 2018. Primary prevention of cardiovascular disease with a Mediterranean diet. NEJM 378(25), e34.",
+  "4": "Diabetes Prevention Program Research Group. 2002. Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin. NEJM 346(6), 393–403.",
+  "5": "Chowdhury, S.R. et al. 2023. Global and regional prevalence of multimorbidity in the adult population. EClinicalMedicine 57.",
+  "6": "Schiltz, N.K. 2022. Prevalence of multimorbidity combinations and their association with medical costs. Frontiers in Public Health 10, 953886.",
+  "7": "International Confederation of Dietetic Associations. 2021. Education and Work Report 2021: Dietitian-Nutritionists Around the World.",
+  "8": "Siopis, G. et al. 2020. The dietetic workforce distribution geographic atlas. Nutrition & Dietetics 77(1), 121–130.",
+  "9": "Liu, N.F. et al. 2024. Lost in the middle: How language models use long contexts. TACL 12, 157–173.",
+  "10": "Qiu, P. et al. 2025. Quantifying the reasoning abilities of LLMs on clinical cases. Nature Communications 16(1), 9799.",
+  "11": "Asgari, E. et al. 2025. A framework to assess clinical safety and hallucination rates of LLMs for medical text summarisation. npj Digital Medicine 8(1), 274.",
+  "12": "Roustan, D. et al. 2025. The clinicians' guide to large language models. Interactive Journal of Medical Research 14(1), e59823.",
+  "13": "Borkowski, A.A. & Ben-Ari, A. 2025. Multiagent AI Systems in Health Care. Federal Practitioner 42(5).",
+  "14": "DASH Collaborative Research Group. 1997. A clinical trial of the effects of dietary patterns on blood pressure. NEJM 336(16), 1117–1124.",
+  "15": "American Diabetes Association. 2024. Standards of Care in Diabetes—2024. Diabetes Care 47, Supplement_1, S1–S4.",
+  "16": "U.S. National Library of Medicine. 2024. DailyMed. https://dailymed.nlm.nih.gov/",
+  "17": "Gao, Y. et al. 2023. Retrieval-augmented generation for large language models: A survey. arXiv:2312.10997.",
+  "18": "Lewis, P. et al. 2020. Retrieval-augmented generation for knowledge-intensive NLP tasks. NeurIPS 33, 9459–9474.",
+  "19": "Bushra, R. et al. 2011. Food-drug interactions. Oman Medical Journal 26(2), 77–83.",
+  "20": "Johnson, C.L. et al. 2014. National Health and Nutrition Examination Survey: sample design, 2011–2014. US DHHS/CDC.",
+  "21": "Lewis, S.L. et al. 2022. Nutrition Care Process Quality Evaluation and Standardization Tool. JAND 122(3), 650–660.",
+};
+
 function Ref({ id }: { id: string }) {
   return <sup className="text-[9px] text-indigo-500 font-medium ml-px">[{id}]</sup>;
 }
@@ -622,17 +646,17 @@ export default function NutriOrionDemoPrototype() {
                 A hierarchical multi-agent framework that generates clinically valid, personalized nutrition plans
                 grounded in evidence-based guidelines. NutriOrion handles conflicting dietary requirements across
                 multiple conditions while enforcing medication safety constraints, producing structured
-                ADIME <Ref id="39" /> outputs and FHIR-ready resources for seamless EHR integration.
+                ADIME <Ref id="1" /> outputs and FHIR-ready resources for seamless EHR integration.
               </div>
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">The Stakes</div>
                   <div className="mt-2 text-sm text-slate-700">
-                    Chronic diseases cause <span className="font-semibold text-slate-900">70% of global mortality</span> <Ref id="12" />.
-                    Structured nutrition can match pharmacological treatments in effectiveness <Ref id="14,17" /> — yet
+                    Chronic diseases cause <span className="font-semibold text-slate-900">70% of global mortality</span> <Ref id="2" />.
+                    Structured nutrition can match pharmacological treatments in effectiveness <Ref id="3,4" /> — yet
                     <span className="font-semibold text-slate-900"> 40% of patients</span> have multiple co-occurring conditions
-                    that demand conflicting diets <Ref id="10,35" />. With only <span className="font-semibold text-slate-900">1 nutrition professional
-                    per 5,000 patients</span> <Ref id="18,38" />, manual integration is impossible at scale.
+                    that demand conflicting diets <Ref id="5,6" />. With only <span className="font-semibold text-slate-900">1 nutrition professional
+                    per 5,000 patients</span> <Ref id="7,8" />, manual integration is impossible at scale.
                   </div>
                 </div>
 
@@ -640,9 +664,9 @@ export default function NutriOrionDemoPrototype() {
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Why Current AI Fails</div>
                   <div className="mt-2 text-sm text-slate-700">
                     Single-agent LLMs process all patient data through one context window.
-                    As complexity grows, they suffer from <span className="font-semibold text-slate-900">reasoning collapse</span> <Ref id="24,31" />:
+                    As complexity grows, they suffer from <span className="font-semibold text-slate-900">reasoning collapse</span> <Ref id="9,10" />:
                     safety constraints get overridden, drug–nutrient interactions are missed,
-                    and recommendations contradict patient data <Ref id="5,34" />. A "healthy" suggestion can become
+                    and recommendations contradict patient data <Ref id="11,12" />. A "healthy" suggestion can become
                     a <span className="font-semibold text-slate-900">dangerous one</span>.
                   </div>
                 </div>
@@ -650,7 +674,7 @@ export default function NutriOrionDemoPrototype() {
                 <div className="rounded-2xl border border-slate-200 bg-white p-5">
                   <div className="text-xs font-semibold text-slate-500 uppercase tracking-wide">The Key Insight</div>
                   <div className="mt-2 text-sm text-slate-700">
-                    Clinical teams don't work as a single brain — they <span className="font-semibold text-slate-900">divide and conquer</span> <Ref id="7" />.
+                    Clinical teams don't work as a single brain — they <span className="font-semibold text-slate-900">divide and conquer</span> <Ref id="13" />.
                     Each specialist assesses independently, then they synthesize together. NutriOrion mirrors
                     this: <span className="font-semibold text-slate-900">decompose, isolate, then synthesize under safety constraints</span>.
                   </div>
@@ -663,25 +687,25 @@ export default function NutriOrionDemoPrototype() {
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">1. Retrieve</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Ground every decision in clinical guidelines (DASH <Ref id="11" />, ADA <Ref id="2" />) and real drug labels (DailyMed <Ref id="43" />) via RAG <Ref id="15,22" /> — not memorized knowledge.
+                      Ground every decision in clinical guidelines (DASH <Ref id="14" />, ADA <Ref id="15" />) and real drug labels (DailyMed <Ref id="16" />) via RAG <Ref id="17,18" /> — not memorized knowledge.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">2. Assess in Parallel</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Specialized agents (Body, Clinical, Medication, Diet) analyze independently with isolated contexts, preventing cross-domain bias and anchoring <Ref id="24" />.
+                      Specialized agents (Body, Clinical, Medication, Diet) analyze independently with isolated contexts, preventing cross-domain bias and anchoring <Ref id="9" />.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">3. Refine & Prioritize</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Condition-specific dietitians resolve conflicts via Severity–Urgency–Modifiability scoring, while safety constraints are injected as hard negatives <Ref id="8" />.
+                      Condition-specific dietitians resolve conflicts via Severity–Urgency–Modifiability scoring, while safety constraints are injected as hard negatives <Ref id="19" />.
                     </div>
                   </div>
                   <div className="rounded-xl bg-slate-50 border border-slate-100 p-4">
                     <div className="text-sm font-semibold text-slate-900">4. Output</div>
                     <div className="mt-1 text-xs text-slate-600">
-                      Structured ADIME <Ref id="39" /> clinical notes + FHIR R4 NutritionOrder — ready for direct EHR integration.
+                      Structured ADIME <Ref id="1" /> clinical notes + FHIR R4 NutritionOrder — ready for direct EHR integration.
                     </div>
                   </div>
                 </div>
@@ -690,7 +714,7 @@ export default function NutriOrionDemoPrototype() {
               <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">330</div>
-                  <div className="mt-1 text-xs text-slate-600">Multimorbid stroke patients (NHANES <Ref id="19" />)</div>
+                  <div className="mt-1 text-xs text-slate-600">Multimorbid stroke patients (NHANES <Ref id="20" />)</div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">97.8%</div>
@@ -698,7 +722,7 @@ export default function NutriOrionDemoPrototype() {
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">7.5 / 8</div>
-                  <div className="mt-1 text-xs text-slate-600">Expert dietitian quality rating (NCP-QUEST <Ref id="23" />)</div>
+                  <div className="mt-1 text-xs text-slate-600">Expert dietitian quality rating (NCP-QUEST <Ref id="21" />)</div>
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center">
                   <div className="text-2xl font-bold text-slate-900">+167%</div>
@@ -1544,6 +1568,20 @@ Patient Medications: Warfarin 5mg daily, Lisinopril 10mg daily
               <span>Contact: junwei.wu@emory.edu · j.carlyang@emory.edu</span>
             </div>
           </Section>
+
+          {/* Collapsible References */}
+          <details className="mt-8 rounded-2xl border border-slate-200 bg-white">
+            <summary className="cursor-pointer px-5 py-4 text-sm font-semibold text-slate-900 select-none hover:bg-slate-50 rounded-2xl">
+              References
+            </summary>
+            <ol className="px-5 pb-5 pt-2 space-y-1.5 text-xs text-slate-600 leading-relaxed list-decimal pl-10">
+              {Object.entries(REFERENCES).sort(([a], [b]) => Number(a) - Number(b)).map(([id, text]) => (
+                <li key={id} id={`ref-${id}`} value={Number(id)}>
+                  {text}
+                </li>
+              ))}
+            </ol>
+          </details>
 
           <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-4">
             <div className="text-xs font-semibold text-amber-900">Disclaimer</div>
